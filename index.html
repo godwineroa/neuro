@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy National Girlfriends Day ❤️ — For Nie, from Win</title>
+<meta name="description" content="A little interactive love story, made only for one person." />
+
+<!-- Fonts: script for handwriting, serif for headlines, sans for body -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
+</head>
+<body>
+
+<!-- ========== BACKGROUND LAYERS (always present) ========== -->
+<canvas id="sky-canvas" aria-hidden="true"></canvas>   <!-- stars, meteors -->
+<div class="aurora" aria-hidden="true"></div>          <!-- soft moving glow -->
+<canvas id="fx-canvas" aria-hidden="true"></canvas>    <!-- hearts, confetti, fireworks -->
+
+<!-- Moon: easter egg — click it 🌙 -->
+<button id="moon" class="moon" aria-label="A quiet little moon" title="🌙"></button>
+
+<!-- ========== SCENE 1 — LOADING ========== -->
+<section id="scene-loading" class="scene active" aria-label="Loading">
+  <div class="loading-wrap">
+    <div class="loading-heart" aria-hidden="true">
+      <span class="beat">❤</span>
+    </div>
+    <p class="loading-text">Preparing something special<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>
+    <div class="loading-bar" role="progressbar" aria-label="Loading progress"><span id="loading-fill"></span></div>
+  </div>
+</section>
+
+<!-- ========== SCENE 2 — COVER ========== -->
+<section id="scene-cover" class="scene" aria-label="Cover">
+  <div class="cover-wrap glass-soft">
+    <p class="eyebrow">August 1st · A little adventure</p>
+    <h1 class="cover-title">Happy National<br /><span class="script-line">Girlfriends Day</span> <span class="pulse-heart">❤️</span></h1>
+    <p class="cover-sub">A little surprise from <button class="name-btn" data-egg="win">Win</button>.</p>
+    <p class="cover-note">“This website was made only for one person.”</p>
+    <button id="btn-begin" class="btn btn-glow">Begin ✨</button>
+  </div>
+</section>
+
+<!-- ========== SCENE 3 — SECRET DOOR ========== -->
+<section id="scene-door" class="scene" aria-label="Secret door">
+  <p class="door-caption">Only <button class="name-btn" data-egg="nie">Nie</button> can enter.</p>
+  <div id="door" class="door" role="button" tabindex="0" aria-label="Open the secret door">
+    <div class="door-frame">
+      <div class="door-light" aria-hidden="true"></div>
+      <div class="door-panel">
+        <div class="door-knob" aria-hidden="true"></div>
+        <div class="door-heart" aria-hidden="true">❥</div>
+      </div>
+    </div>
+    <p class="door-hint">tap the door</p>
+  </div>
+</section>
+
+<!-- ========== SCENE 4 — PERSONAL GREETING (typewriter letter) ========== -->
+<section id="scene-greeting" class="scene" aria-label="A personal greeting">
+  <div class="paper glass">
+    <div id="typewriter" class="typewriter" aria-live="polite"></div>
+    <button id="btn-greeting-next" class="btn btn-glow hidden-soft">Continue ❤️</button>
+  </div>
+</section>
+
+<!-- ========== SCENE 5 — MEMORY GALLERY ========== -->
+<section id="scene-gallery" class="scene scroll" aria-label="Memory gallery">
+  <header class="scene-head">
+    <h2 class="scene-title script-line">Our Little Gallery</h2>
+    <p class="scene-sub">Some moments float back to me all the time.</p>
+  </header>
+
+  <!-- Polaroids are generated from the GALLERY_ITEMS list at the top of
+       script.js — edit photos, videos and captions there, in ONE place.
+       The order still shuffles on every visit, and missing files still
+       show a pretty placeholder. -->
+  <div class="gallery" id="gallery"></div>
+
+  <button class="btn btn-glow next-btn" data-next="scene-cards">Keep going →</button>
+</section>
+
+<!-- ========== SCENE 6 — WHY YOU'RE AMAZING ========== -->
+<section id="scene-cards" class="scene scroll" aria-label="Why you're amazing">
+  <header class="scene-head">
+    <h2 class="scene-title script-line">Why You're Amazing</h2>
+    <p class="scene-sub">Tap a card. Each one hides a secret.</p>
+  </header>
+
+  <div class="cards">
+    <button class="flip-card"><span class="flip-inner">
+      <span class="flip-front"><em>❤️</em>Your smile</span>
+      <span class="flip-back">Your smile can fix any bad day I've ever had. It's my favorite view in the world.</span>
+    </span></button>
+    <button class="flip-card"><span class="flip-inner">
+      <span class="flip-front"><em>🌸</em>Your kindness</span>
+      <span class="flip-back">You're gentle with everyone, even when the world isn't gentle with you. I admire that so much.</span>
+    </span></button>
+    <button class="flip-card"><span class="flip-inner">
+      <span class="flip-front"><em>✨</em>Your laugh</span>
+      <span class="flip-back">Honestly? I say silly things on purpose just to hear it.</span>
+    </span></button>
+    <button class="flip-card"><span class="flip-inner">
+      <span class="flip-front"><em>😊</em>Your love</span>
+      <span class="flip-back">Your love feels like home, the one place my heart always finds its way back to.</span>
+    </span></button>
+    <button class="flip-card"><span class="flip-inner">
+      <span class="flip-front"><em>🌎</em>Everything about you</span>
+      <span class="flip-back">The big things, the tiny things, the things you don't even notice about yourself. All of it. All of you.</span>
+    </span></button>
+  </div>
+
+  <button class="btn btn-glow next-btn" data-next="scene-jar">One more surprise →</button>
+</section>
+
+<!-- ========== SCENE 7 — LOVE JAR ========== -->
+<section id="scene-jar" class="scene scroll" aria-label="Love jar">
+  <header class="scene-head">
+    <h2 class="scene-title script-line">The Love Jar</h2>
+    <p class="scene-sub">Fifty little notes. Tap the jar to pull one out.</p>
+  </header>
+
+  <div class="jar-area">
+    <button id="jar" class="jar" aria-label="Pull a love note from the jar">
+      <svg viewBox="0 0 200 260" aria-hidden="true">
+        <!-- lid -->
+        <rect x="55" y="8" width="90" height="26" rx="10" class="jar-lid"/>
+        <!-- glass body -->
+        <path d="M60 34 h80 v18 c18 14 26 34 26 58 v104 a36 36 0 0 1 -36 36 h-60 a36 36 0 0 1 -36 -36 v-104 c0-24 8-44 26-58 z" class="jar-glass"/>
+        <!-- glass shine -->
+        <path d="M52 96 q-6 60 4 118" class="jar-shine"/>
+        <!-- folded notes -->
+        <g class="jar-notes">
+          <rect x="62"  y="196" width="26" height="18" rx="3" transform="rotate(-12 75 205)"/>
+          <rect x="92"  y="200" width="26" height="18" rx="3" transform="rotate(8 105 209)"/>
+          <rect x="122" y="194" width="26" height="18" rx="3" transform="rotate(-6 135 203)"/>
+          <rect x="76"  y="172" width="26" height="18" rx="3" transform="rotate(10 89 181)"/>
+          <rect x="108" y="170" width="26" height="18" rx="3" transform="rotate(-9 121 179)"/>
+          <rect x="94"  y="146" width="26" height="18" rx="3" transform="rotate(5 107 155)"/>
+        </g>
+        <!-- little heart label -->
+        <text x="100" y="128" text-anchor="middle" class="jar-label">❤</text>
+      </svg>
+    </button>
+
+    <div id="note-card" class="note-card" role="status" aria-live="polite">
+      <p id="note-text">Tap the jar…</p>
+      <span id="note-count" class="note-count"></span>
+    </div>
+  </div>
+
+  <button class="btn btn-glow next-btn" data-next="scene-scratch">Something shiny next →</button>
+</section>
+
+<!-- ========== SCENE 8 — SCRATCH CARD ========== -->
+<section id="scene-scratch" class="scene scroll" aria-label="Scratch card">
+  <header class="scene-head">
+    <h2 class="scene-title script-line">A Secret Underneath</h2>
+    <p class="scene-sub">Scratch the glitter away with your finger (or mouse).</p>
+  </header>
+
+  <div class="scratch-wrap glass-soft">
+    <div class="scratch-message">
+      <p class="script-line big">You + Me</p>
+      <p>No matter the day, no matter the year, <br/>you will always be my favorite hello<br/>and my hardest goodbye. ❤️</p>
+    </div>
+    <canvas id="scratch-canvas" aria-label="Scratchable surface"></canvas>
+  </div>
+
+  <button class="btn btn-glow next-btn hidden-soft" id="btn-after-scratch" data-next="scene-gift">Open your gift →</button>
+</section>
+
+<!-- ========== SCENE 9 — SURPRISE BOX ========== -->
+<section id="scene-gift" class="scene" aria-label="Surprise box">
+  <header class="scene-head">
+    <h2 class="scene-title script-line">For You</h2>
+    <p class="scene-sub" id="gift-hint">Tap the box to untie the ribbon…</p>
+  </header>
+
+  <div id="giftbox" class="giftbox" role="button" tabindex="0" aria-label="Open the gift box">
+    <div class="gift-glow" aria-hidden="true"></div>
+    <div class="gift-lid">
+      <div class="gift-bow" aria-hidden="true"><i></i><i></i></div>
+    </div>
+    <div class="gift-base">
+      <div class="ribbon-v" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <button class="btn btn-glow next-btn hidden-soft" id="btn-after-gift" data-next="scene-letter">Read the letter ✉️</button>
+</section>
+
+<!-- ========== SCENE 10 — FINAL LOVE LETTER ========== -->
+<section id="scene-letter" class="scene scroll" aria-label="Final love letter">
+  <div class="paper glass letter">
+    <p class="letter-line script-line big">Dear Nie,</p>
+    <p class="letter-line">Thank you for every smile.</p>
+    <p class="letter-line">Every laugh.</p>
+    <p class="letter-line">Every memory.</p>
+    <p class="letter-line">Every little thing you do.</p>
+    <p class="letter-line">You make life brighter.</p>
+    <p class="letter-line">Thank you for choosing me every day.</p>
+    <p class="letter-line">Happy National Girlfriends Day.</p>
+    <p class="letter-line">I love you more than words can ever explain.</p>
+    <p class="letter-line">Forever yours,</p>
+    <p class="letter-line script-line big">❤️ <button class="name-btn" data-egg="win">Win</button></p>
+    <button class="btn btn-glow next-btn hidden-soft" id="btn-after-letter" data-next="scene-ending">One last thing…</button>
+  </div>
+</section>
+
+<!-- ========== SCENE 11 — ENDING ========== -->
+<section id="scene-ending" class="scene" aria-label="Ending">
+  <div class="ending-photos" id="ending-photos" aria-hidden="true"></div>
+  <div class="ending-text">
+    <p class="fade-seq">The End?</p>
+    <p class="fade-seq">Not really…</p>
+    <p class="fade-seq">Our story is just getting started.</p>
+    <p class="fade-seq pulse-heart big">❤️</p>
+    <p class="fade-seq script-line big"><button class="name-btn" data-egg="win">Win</button> &amp; <button class="name-btn" data-egg="nie">Nie</button></p>
+    <p class="fade-seq">Forever.</p>
+    <button id="btn-replay" class="btn btn-ghost fade-seq">Replay the journey ↺</button>
+  </div>
+</section>
+
+<!-- ========== HIDDEN: OUR FUTURE DREAMS (Konami code) ========== -->
+<section id="scene-dreams" class="overlay-page" aria-label="Our future dreams" hidden>
+  <div class="paper glass">
+    <h2 class="script-line big">Our Future Dreams</h2>
+    <p class="dreams-intro">You found the secret page. Of course you did. 😌</p>
+    <ul class="dreams-list">
+      <li>🌅 Watch a sunrise somewhere we've never been</li>
+      <li>✈️ Take our dream trip to Japan</li>
+      <li>🏠 A cozy little place that's just ours</li>
+      <li>🍳 Cook breakfasts in our pajamas</li>
+      <li>🎄 Celebrate every Christmas side by side</li>
+      <li>🎂 Celebrate every birthday together</li>
+      <li>❤️ Love each other a little more every day</li>
+      <li>👵👴 Growing old and still holding hands</li>
+    </ul>
+    <button class="btn btn-glow" data-close-overlay>Back to our story ❤️</button>
+  </div>
+</section>
+
+<!-- ========== LIGHTBOX ========== -->
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <figure>
+    <div id="lightbox-media"></div>
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</div>
+
+<!-- ========== TOAST (easter-egg messages) ========== -->
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
