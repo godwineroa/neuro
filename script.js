@@ -391,7 +391,7 @@ const GALLERY_ITEMS = [
   { type: "photo", src: "assets/images/photo4.jpg", caption: "Us, being us 😂" },
   { type: "photo", src: "assets/images/photo5.jpg", caption: "I still laugh at this one 😂" },
   { type: "photo", src: "assets/images/photo6.jpg", caption: "Your favorite smile 😊" },
-  { type: "video", src: "assets/videos/video1.mp4", caption: "A memory in motion 🎬" },
+  { type: "video", src: "assets/images/video1.mp4", caption: "A memory in motion 🎬" },
 ];
 
 (function gallery() {
