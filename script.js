@@ -8,7 +8,7 @@
 
 /* ─────────────────────────── CONFIG ─────────────────────────── */
 
-/* 📅 EDIT THIS → the exact moment you two became official.
+/* 📅 EDIT THIS → the exact moment you two becamee official.
    Format: "YYYY-MM-DDTHH:MM:SS" (24-hour time, your local time). */
 const RELATIONSHIP_START = "2026-07-07T16:30:00"; // July 7, 4:30 PM
 
