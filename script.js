@@ -24,7 +24,7 @@ const PHOTO_CAPTIONS = [
   "certified cutie — approved 👍💘",
   "your smile, my favorite view",
   "golden hour? no, that's just you ✨",
-  "my lockscreen, obviously",
+  "my girlfriend, obviously",
   "my whole heart, in one frame",
 ];
 
@@ -34,7 +34,7 @@ const PHOTO_CAPTIONS = [
    💡 Want more or fewer? Add or delete captions here — the wall
    rebuilds itself automatically. */
 const VIDEO_CAPTIONS = [
-  "our little film 🎬",
+  "a little film 🎬",
   "caught you being cute 🎥",
   "a moment I keep replaying 💗",
 ];
