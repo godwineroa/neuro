@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy First Monthsary ❤️ — For Nie</title>
+<meta name="description" content="A little universe made with love, from Win to Nie." />
+
+<!-- Fonts: romantic script + elegant serif + soft rounded body -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     AMBIENT LAYERS (always behind everything)
+     ════════════════════════════════════════════════════════════ -->
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<div id="aurora" aria-hidden="true">
+  <div class="aurora-band a1"></div>
+  <div class="aurora-band a2"></div>
+  <div class="aurora-band a3"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SCENE TRANSITION OVERLAY (unique cinematic wipes live here)
+     ════════════════════════════════════════════════════════════ -->
+<div id="transition-layer" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════════════════════════
+     MINI VINYL DOCK (appears after the music scene)
+     ════════════════════════════════════════════════════════════ -->
+<div id="vinyl-dock" class="hidden" role="region" aria-label="Music player">
+  <button id="dock-disc" class="dock-disc" aria-label="Play or pause music">
+    <span class="dock-grooves"></span>
+    <span class="dock-label">♪</span>
+  </button>
+  <div class="dock-panel">
+    <span id="dock-status" class="dock-status">Paused</span>
+    <input id="dock-volume" type="range" min="0" max="100" value="70" aria-label="Volume" />
+    <button id="dock-mute" class="dock-mute" aria-label="Mute or unmute">🔊</button>
+  </div>
+</div>
+
+<!-- Background music.
+     REPLACE assets/music/MUSIC_PLACEHOLDER.mp3 with your song file.
+     Keep the same filename, or edit the src below. -->
+<audio id="bg-music" src="assets/music/music1.mp3" loop preload="none"></audio>
+
+<main id="app">
+
+  <!-- ══════════════ SCENE 1 · LANDING ══════════════ -->
+  <section class="scene active" id="scene-landing" data-chapter="Prologue">
+    <div class="landing-clouds" aria-hidden="true">
+      <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+    </div>
+    <div class="landing-hearts" aria-hidden="true"></div>
+    <div class="scene-inner landing-inner">
+      <p class="eyebrow">A little universe, made for you Nie!</p>
+      <h1 class="landing-title">Happy First <span class="script">Monthsary</span> <span class="beat-heart">❤️</span></h1>
+      <p class="landing-sub">“For the girl who made distance feel smaller.”</p>
+      <button class="glow-btn" id="btn-open-heart">
+        <span class="glow-btn-halo" aria-hidden="true"></span>
+        Open My Heart
+      </button>
+      <p class="hint">headphones on, Love 🎧</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 2 · FLOWER BLOOM ══════════════ -->
+  <section class="scene" id="scene-bloom" data-chapter="Chapter I · The Garden">
+    <div class="scene-inner bloom-inner">
+      <div class="bloom-stage" id="bloom-stage" aria-label="A seed grows into a blooming flower">
+        <!-- SVG flower is injected by script.js so the animation restarts cleanly -->
+      </div>
+      <p class="bloom-caption" id="bloom-caption">a tiny seed falls…</p>
+      <div class="bloom-reveal hidden" id="bloom-reveal">
+        <p class="reveal-line">Something small was planted a month ago…</p>
+        <p class="reveal-line strong">and look how beautifully it grew. 🌸</p>
+        <button class="glow-btn small" id="btn-after-bloom">Keep going</button>
+      </div>
+      <button class="skip-btn" id="btn-skip-bloom">skip ↦</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 3 · LOVE LETTER ══════════════ -->
+  <section class="scene" id="scene-letter" data-chapter="Chapter II · A Letter Arrives">
+    <div class="scene-inner letter-inner">
+      <p class="eyebrow">something arrived for you…</p>
+      <div class="envelope-wrap" id="envelope-wrap">
+        <button class="envelope" id="envelope" aria-label="Open the envelope">
+          <span class="env-back"></span>
+          <span class="env-paper" id="env-paper">
+            <span class="typed" id="typed-letter" aria-live="polite"></span>
+          </span>
+          <span class="env-front"></span>
+          <span class="env-flap"></span>
+          <span class="env-seal">N</span>
+        </button>
+      </div>
+      <div class="letter-hearts" id="letter-hearts" aria-hidden="true"></div>
+      <button class="glow-btn small hidden" id="btn-after-letter">Our memories →</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 4 · MEMORY JOURNEY ══════════════ -->
+  <section class="scene" id="scene-memories" data-chapter="Chapter III · My Treasures">
+    <div class="scene-inner memories-inner">
+      <h2 class="scene-title">My <span class="script">Treasures</span></h2>
+      <p class="scene-sub">tap a treasure — photos &amp; little films 📸🎞️</p>
+      <div class="polaroid-sky" id="polaroid-sky"><!-- polaroids injected by script.js --></div>
+      <button class="glow-btn small" id="btn-after-memories">There’s more…</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 5 · GIF MEMORIES ══════════════ -->
+  <section class="scene" id="scene-gifs" data-chapter="Chapter III½ · Our Little Photobooth">
+    <div class="scene-inner gifs-inner">
+      <h2 class="scene-title">Our <span class="script">Photobooth</span> across the miles</h2>
+      <p class="scene-sub">kilometers apart, pero kasya pa rin tayo sa iisang photo strip 📸</p>
+      <div class="gif-grid" id="gif-grid"><!-- gif frames injected by script.js --></div>
+      <button class="glow-btn small" id="btn-after-gifs">Wait… do you hear that?</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 6 · VINYL MUSIC ══════════════ -->
+  <section class="scene" id="scene-music" data-chapter="Interlude · Our Soundtrack">
+    <div class="scene-inner music-inner">
+      <h2 class="scene-title">Every love story has a <span class="script">song</span></h2>
+      <p class="scene-sub">tap the record, Love 🎶</p>
+      <div class="turntable">
+        <button class="vinyl" id="vinyl" aria-label="Play our song">
+          <span class="vinyl-grooves"></span>
+          <span class="vinyl-sheen"></span>
+          <span class="vinyl-center"><span class="script">W ♥ N</span></span>
+        </button>
+        <div class="tonearm" id="tonearm" aria-hidden="true">
+          <span class="arm-base"></span><span class="arm-rod"></span><span class="arm-head"></span>
+        </div>
+      </div>
+      <div class="now-playing hidden" id="now-playing">
+        <span class="np-icon">🎵</span> Now Playing <span class="np-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="music-controls hidden" id="music-controls">
+        <button class="chip-btn" id="btn-music-toggle">Pause</button>
+        <label class="vol-label">vol
+          <input id="music-volume" type="range" min="0" max="100" value="70" aria-label="Volume" />
+        </label>
+        <button class="chip-btn" id="btn-music-mute">Mute</button>
+      </div>
+      <button class="glow-btn small hidden" id="btn-after-music">Now… read this 💌</button>
+      <p class="hint" id="music-hint">the music will follow you through the rest of the journey</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 7 · LONG MESSAGE ══════════════ -->
+  <section class="scene" id="scene-message" data-chapter="Chapter IV · From My Heart">
+    <div class="scene-inner message-inner">
+      <div class="paper-sheet" id="paper-sheet">
+        <div class="paper-deckle top" aria-hidden="true"></div>
+        <article class="long-letter" id="long-letter"><!-- paragraphs injected by script.js --></article>
+        <div class="paper-deckle bottom" aria-hidden="true"></div>
+      </div>
+      <button class="glow-btn small hidden" id="btn-after-message">My promises to you 🌱</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 8 · PROMISE TREE ══════════════ -->
+  <section class="scene" id="scene-tree" data-chapter="Chapter V · The Promise Tree">
+    <div class="scene-inner tree-inner">
+      <h2 class="scene-title">I planted a <span class="script">promise</span> for you</h2>
+      <p class="scene-sub">every leaf holds one, tap them all 🍃 <span class="leaf-count" id="leaf-count"></span></p>
+      <div class="tree-stage" id="tree-stage"><!-- SVG tree + leaves injected --></div>
+      <div class="promise-toast hidden" id="promise-toast" role="status"></div>
+      <button class="glow-btn small" id="btn-after-tree">How long has it been?</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 9 · COUNTDOWN ══════════════ -->
+  <section class="scene" id="scene-countdown" data-chapter="Chapter VI · Every Second Counts">
+    <div class="scene-inner countdown-inner">
+      <h2 class="scene-title">Time since we started <span class="script">loving</span> each other</h2>
+      <div class="count-grid" id="count-grid">
+        <div class="count-cell"><span class="count-num" id="cd-days">0</span><span class="count-lab">days</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-hours">0</span><span class="count-lab">hours</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-mins">0</span><span class="count-lab">minutes</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-secs">0</span><span class="count-lab">seconds</span></div>
+      </div>
+      <p class="scene-sub">…and still counting. always counting. ∞</p>
+      <button class="glow-btn small" id="btn-after-countdown">I kept something for our future 🗝️</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 11 · FUTURE LETTER / CHEST ══════════════ -->
+  <section class="scene" id="scene-chest" data-chapter="Chapter VII · For Someday">
+    <div class="scene-inner chest-inner">
+      <p class="eyebrow">locked until the right moment…</p>
+      <div class="chest-stage">
+        <button class="chest" id="chest" aria-label="Open the treasure chest">
+          <span class="chest-glow" aria-hidden="true"></span>
+          <span class="chest-lid"><span class="chest-band"></span></span>
+          <span class="chest-body"><span class="chest-band"></span><span class="chest-lock">🔒</span></span>
+          <span class="chest-light" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="future-letter hidden" id="future-letter">
+        <h3 class="future-title script">My letter for our future</h3>
+        <!-- ✏️ REPLACE THIS PLACEHOLDER with the real future letter someday -->
+        <p class="future-body">
+          This page is reserved. One day, when we’re finally
+          in the same city, breathing the same air, I’ll replace these words with everything
+          I’m saving up to tell you in person. For now, just know: the future I imagine
+          always, always has you in it. — Win 
+        </p>
+        <button class="glow-btn small" id="btn-after-chest">Come see the night I made you ✨</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 12 · FIREFLIES ══════════════ -->
+  <section class="scene night" id="scene-fireflies" data-chapter="Chapter VIII · Fireflies">
+    <div class="scene-inner fireflies-inner">
+      <h2 class="scene-title moonlit">Catch a <span class="script">firefly</span></h2>
+      <p class="scene-sub moonlit">each one carries a tiny message for you <span id="firefly-count"></span></p>
+      <div class="firefly-field" id="firefly-field"></div>
+      <div class="firefly-note hidden" id="firefly-note" role="status"></div>
+      <button class="glow-btn small night-btn" id="btn-after-fireflies">Look up… 🌠</button>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 13 · SHOOTING STARS ══════════════ -->
+  <section class="scene night" id="scene-stars" data-chapter="Chapter IX · Wishing Sky">
+    <div class="scene-inner stars-inner">
+      <h2 class="scene-title moonlit">Catch a <span class="script">shooting star</span></h2>
+      <p class="scene-sub moonlit">every star you catch grants a wish — a sweet one 🌠</p>
+      <div class="star-sky" id="star-sky"></div>
+      <div class="star-wish hidden" id="star-wish" role="status"></div>
+      <div class="stars-actions">
+        <button class="chip-btn night-chip" id="btn-summon-star">summon a star ✦</button>
+        <button class="glow-btn small night-btn" id="btn-after-stars">One last thing, mahal…</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SCENE 14 · FINALE ══════════════ -->
+  <section class="scene night" id="scene-finale" data-chapter="Epilogue · Home">
+    <div class="finale-photos" id="finale-photos" aria-hidden="true"></div>
+    <div class="scene-inner finale-inner">
+      <div class="finale-flower" id="finale-flower" aria-hidden="true"></div>
+      <div class="heart-ring" id="heart-ring" aria-hidden="true"></div>
+      <div class="finale-text" id="finale-text">
+        <p class="finale-line l1">No matter how many kilometers separate us…</p>
+        <p class="finale-line l2 script">You’ll always be home.</p>
+        <p class="finale-line l3">Happy First Monthsary ❤️</p>
+        <p class="finale-line l4">Love,<br /><span class="script big">Win</span></p>
+        <button class="glow-btn small hidden" id="btn-finale-burst">One more kiss of light ✨</button>
+        <p class="credits hidden" id="credits">— Made with love by Win, for Nie —</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ LIGHTBOX (photo viewer) ══════════════ -->
+<div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+  <figure class="lightbox-card" id="lightbox-card">
+    <div class="lightbox-img" id="lightbox-img"></div>
+    <figcaption class="lightbox-cap" id="lightbox-cap"></figcaption>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close photo">✕</button>
+  </figure>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
